@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Plan MCN Phase 1</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap">
+<style>
+/* Workspace gọn: điều hướng theo luồng, danh sách việc rõ ràng, chi tiết mở khi cần. */
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f6f8;--surface:#fff;--fg:#202c38;--muted:#667482;--line:#e1e6eb;--accent:#087a73;--soft:#eaf5f2;--hover:#f8fafb;--warn:#91621e;--warn-bg:#faf3e5;--display:"Manrope",system-ui,sans-serif;--body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#141a20;--surface:#1c242c;--fg:#e2eaf0;--muted:#a0adba;--line:#323d47;--accent:#73d7c6;--soft:#223a37;--hover:#232d36;--warn:#e5bc75;--warn-bg:#353024}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#141a20;--surface:#1c242c;--fg:#e2eaf0;--muted:#a0adba;--line:#323d47;--accent:#73d7c6;--soft:#223a37;--hover:#232d36;--warn:#e5bc75;--warn-bg:#353024}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.65 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}button,input{font:inherit}button,a,input,summary{-webkit-tap-highlight-color:transparent}button{cursor:pointer}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px}h1,h2,h3,p{margin:0}h1,h2{font-family:var(--display);text-wrap:balance}svg{display:block;flex:none}button svg{pointer-events:none}button{color:inherit}main,aside,section,article{min-width:0}[hidden]{display:none!important}
+.shell{max-width:1160px;margin:auto;padding-block:32px 60px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:24px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px}.mark{width:38px;height:38px;display:grid;place-items:center;background:var(--accent);color:var(--surface);border-radius:10px;font:800 13px var(--display);letter-spacing:.04em}.brand-name{font:800 16px var(--display)}.brand-note{color:var(--muted);font-size:12px}.links{display:flex;flex-wrap:wrap;gap:16px;font-size:12px}.heading{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding-block:30px 26px}.eyebrow{font-size:11px;letter-spacing:.09em;font-weight:600;text-transform:uppercase;color:var(--accent);margin-bottom:7px}h1{font-size:32px;line-height:1.3;letter-spacing:-.035em}.intro{color:var(--muted);margin-top:8px;max-width:62ch;font-size:13px}.count{color:var(--muted);font-size:12px;white-space:nowrap}.workspace{display:grid;grid-template-columns:222px minmax(0,1fr);gap:28px;align-items:start}.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);display:flex;flex-direction:column;gap:20px}.nav-label{font-size:10px;font-weight:600;letter-spacing:.09em;color:var(--muted);text-transform:uppercase;padding-left:12px}.nav{display:flex;flex-direction:column;gap:4px;margin-top:9px}.nav button{border:0;background:none;display:flex;align-items:center;gap:10px;text-align:left;padding:11px 12px;border-radius:8px;font-size:12px;color:var(--muted);width:100%}.nav button:hover{background:var(--hover);color:var(--fg)}.nav button[aria-pressed="true"]{background:var(--soft);color:var(--accent);font-weight:600}.nav button span:first-child{flex:1}.nav .n{font-size:11px;font-variant-numeric:tabular-nums}.side-note{font-size:11px;color:var(--muted);padding:16px 12px 0;border-top:1px solid var(--line)}.main{display:flex;flex-direction:column;gap:20px}.tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.search{position:relative;flex:1;min-width:170px}.search svg{position:absolute;left:13px;top:14px;color:var(--muted);pointer-events:none}.search input{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);padding:11px 13px 11px 39px;font-size:12px}.search input::placeholder{color:var(--muted)}.expand{border:1px solid var(--line);background:var(--surface);padding:11px 13px;border-radius:8px;font-size:12px;white-space:nowrap}.expand:hover{background:var(--hover)}.groups{display:flex;flex-direction:column;gap:24px}.group-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}.group-head h2{font-size:16px;font-weight:800;letter-spacing:-.01em}.group-head .rule{flex:1;height:1px;background:var(--line)}.group-head .small{font-size:11px;color:var(--muted)}.tasks{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}.task+.task{border-top:1px solid var(--line)}.task summary{display:flex;align-items:center;gap:13px;list-style:none;cursor:pointer;padding:17px 18px}.task summary::-webkit-details-marker{display:none}.task summary:hover{background:var(--hover)}.index{align-self:flex-start;display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--line);border-radius:7px;font:600 11px var(--display);font-variant-numeric:tabular-nums;color:var(--muted);margin-top:1px;flex:none}.task-title{font-size:13px;font-weight:600;line-height:1.55}.task-blurb{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.7}.task-copy{flex:1;min-width:0}.chevron{color:var(--muted);transition:transform .15s}.task[open] .chevron{transform:rotate(90deg)}.task[open] .index{color:var(--accent);border-color:var(--accent);background:var(--soft)}.detail{padding:0 18px 19px 59px;display:flex;flex-direction:column;gap:9px}.detail-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;font-size:12px}.detail-row .label{color:var(--muted);font-size:10px;font-weight:600;padding-top:2px}.detail-row p{overflow-wrap:anywhere}.empty{padding:32px 20px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);text-align:center;font-size:13px}.decision{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:18px 20px}.decision h2{font-size:15px;font-weight:800}.decision p{font-size:12px;color:var(--muted);margin-top:4px}.decision ul{margin:12px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:7px;font-size:12px}.decisions{padding-block:8px}.pending{display:flex;gap:8px;align-items:center;color:var(--warn);font-size:11px;margin-bottom:8px}.pending::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}.footer{font-size:11px;color:var(--muted);padding-top:2px;line-height:1.8}.footer a{margin-left:6px}.section-only{scroll-margin-top:24px}.no-est{font-variant-numeric:tabular-nums}
+@media(max-width:760px){.shell{padding-block:20px 36px}.top{align-items:flex-start;padding-bottom:18px}.links{gap:8px 12px;justify-content:flex-end;max-width:160px}.brand-note{display:none}.heading{padding-block:24px 20px;align-items:flex-start}.heading .count{display:none}h1{font-size:27px}.workspace{grid-template-columns:minmax(0,1fr);gap:16px}.side{position:static;gap:0}.nav-label,.side-note{display:none}.nav{flex-direction:row;flex-wrap:wrap;gap:6px;margin:0}.nav button{width:auto;padding:8px 10px;border:1px solid var(--line);background:var(--surface);font-size:11px;gap:7px}.main{gap:18px}.task summary{padding:15px 13px;gap:10px}.task-title{font-size:12px}.task-blurb{font-size:11px}.detail{padding:0 14px 17px 51px}.detail-row{grid-template-columns:minmax(0,1fr);gap:2px}.tools{gap:8px}.expand{padding-inline:10px}.decision{padding:16px}.group-head h2{font-size:15px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+/* Checklist thực dụng: bỏ logo, hero, font display và khung trang trí. */
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px}.top{padding-bottom:18px}.top h1{font:650 23px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:0}.heading{padding-block:20px 8px;align-items:center}.heading>div{flex:1;max-width:600px}.progress-line{display:flex;justify-content:space-between;gap:20px;font-size:13px;font-variant-numeric:tabular-nums}.progress-line strong{font-weight:600}progress{display:block;width:100%;height:6px;margin-top:10px;border:0;border-radius:2px;overflow:hidden;background:var(--line);accent-color:var(--accent)}progress::-webkit-progress-bar{background:var(--line)}progress::-webkit-progress-value{background:var(--accent)}progress::-moz-progress-bar{background:var(--accent)}.intro{font-size:12px;margin-top:8px}.save-status{font-size:12px;color:var(--muted);margin-bottom:24px;max-width:90ch}.group-head h2{font:600 15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}.tasks{border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;background:transparent}.task{position:relative}.task summary{padding:15px 6px 15px 40px}.task-toggle{position:absolute;left:6px;top:17px;width:18px;height:18px;margin:0;accent-color:var(--accent);cursor:pointer;z-index:1}.task .index{display:none}.task.completed .task-title{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}.detail{padding:0 12px 17px 40px}.task-title{font-size:13px;font-weight:550}.task-blurb{font-size:12px}.nav button,.search input,.expand{border-radius:4px}.nav-label{font-size:11px;letter-spacing:0;text-transform:none}.decision{border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;padding:20px 0 0}.decision h2{font:600 15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}.group-head .small{white-space:nowrap;font-variant-numeric:tabular-nums}.group-progress{margin:0 0 10px;height:4px}.links{font-size:12px}.side-note{padding-left:12px}.pending{color:var(--muted)}.pending::before{display:none}@media(max-width:760px){.heading{gap:12px;align-items:flex-start;flex-wrap:wrap}.heading>div{flex-basis:100%}.save-status{margin-bottom:18px}.task summary{padding-left:34px}.task-toggle{left:3px;top:16px}.detail{padding-left:34px}.top h1{font-size:21px}}
+.work-items{margin:0;padding-left:17px;display:flex;flex-direction:column;gap:7px}.task-title{font-weight:600}.task-blurb{max-width:72ch}.detail{gap:14px}
+.page-tabs{gap:6px}.page-tabs a{padding:7px 12px;border-bottom:2px solid transparent;color:var(--muted);white-space:nowrap}.page-tabs a[aria-current="page"]{color:var(--fg);border-bottom-color:var(--accent)}.page-tabs a:hover{text-decoration:none;background:var(--hover)}.top{padding-bottom:12px}.progress-toolbar{display:flex;align-items:center;gap:12px;padding-block:14px 18px;font-size:12px;font-variant-numeric:tabular-nums}.progress-toolbar strong{font-weight:600;white-space:nowrap}.progress-toolbar progress{width:140px;flex:0 1 140px;margin:0;height:5px}.progress-toolbar .save-status{margin:0 0 0 auto;max-width:180px;font-size:11px}.progress-toolbar .expand{padding:6px 10px;font-size:12px}.page-view.overview,.document-list{padding-block:24px;max-width:820px}.overview h2,.document-list h2{font:600 18px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}.overview>p{margin-top:10px;max-width:72ch}.overview-facts{margin:20px 0;display:grid;gap:15px}.overview-facts>div{display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px}.overview-facts dt{font-weight:600;font-size:12px}.overview-facts dd{margin:0;font-size:13px;color:var(--muted)}.overview-more{font-size:12px}.overview-more summary{cursor:pointer}.overview-more p{margin-block:10px}.overview .decision{margin-top:22px}.document-list>a{display:flex;flex-direction:column;gap:4px;padding-block:16px;border-bottom:1px solid var(--line)}.document-list>a strong{font-weight:600;font-size:13px}.document-list>a span{font-size:12px;color:var(--muted)}.document-list>.footer{margin-top:18px}.side-note{display:none}.group-progress{height:3px;margin-bottom:6px}.group-head{margin-bottom:6px}@media(max-width:760px){.top{align-items:center;flex-wrap:wrap;gap:12px}.page-tabs{max-width:none;gap:0}.page-tabs a{padding:6px 9px;font-size:12px}.progress-toolbar{gap:8px;flex-wrap:wrap;padding-block:12px}.progress-toolbar progress{width:65px;flex-basis:65px}.progress-toolbar .save-status{max-width:110px;margin-left:auto}.progress-toolbar .expand{padding:5px 8px}.overview-facts>div{grid-template-columns:1fr;gap:3px}.overview-facts{gap:16px}.progress-toolbar strong{font-size:11px}}
+.task-meta{display:flex;flex-wrap:wrap;gap:5px 8px;align-items:center;margin-bottom:4px}.area{font-size:10px;color:var(--muted);border:1px solid var(--line);padding:0 5px;border-radius:3px;line-height:1.7}.task summary{padding-block:12px}.task-toggle{top:26px}.task-copy{min-width:0}@media(max-width:760px){.task-toggle{top:25px}}
+/* Dòng task một hàng; phần mở không dùng cột nhãn rộng. */
+.task summary{display:flex;align-items:center;gap:12px;min-height:52px;padding:13px 8px;background:transparent}.task summary:hover,.task[open] summary{background:transparent}.task summary:hover .task-title{color:var(--accent)}.task-toggle{position:static;flex:0 0 17px;width:17px;height:17px;align-self:center;margin:0}.task-copy{flex:1;min-width:0}.task-title{font-size:13px;line-height:1.6;font-weight:550}.task-meta{flex:none;gap:6px;margin:0;justify-content:flex-end}.area{border:0;background:var(--surface);padding:1px 6px;font-size:10px;border-radius:3px}.chevron{width:14px;height:14px}.detail{padding:1px 36px 18px 37px;max-width:850px;gap:13px}.detail-row{display:flex;flex-direction:column;gap:5px;font-size:12px}.detail-row .label{font-size:10px;font-weight:600;padding:0;color:var(--muted)}.work-items{gap:5px;padding-left:16px}.detail-row:last-child{border-top:1px solid var(--line);padding-top:10px}.task[open]{padding-bottom:2px}@media(max-width:760px){.task summary{display:grid;grid-template-columns:17px minmax(0,1fr) 14px;gap:5px 10px;padding:12px 3px}.task-toggle{grid-column:1;grid-row:1}.task-copy{grid-column:2;grid-row:1}.task-meta{grid-column:2;grid-row:2;justify-content:flex-start;flex-wrap:wrap}.task summary>.chevron{grid-column:3;grid-row:1}.task-title{font-size:12px}.detail{padding:3px 16px 15px 30px}.area{font-size:10px}}
+.plan-scope{font-size:12px;color:var(--muted);max-width:85ch}.task-ref{font-size:11px;color:var(--muted)}.task-blocker{font-size:12px;color:var(--warn);border-left:2px solid var(--line);padding-left:10px}.nav button{padding-block:9px}.group-progress{display:none}
+.plan-scope{font-size:12px;color:var(--muted);max-width:88ch}.task-ref{font-size:11px;color:var(--muted)}.task-blocker{font-size:12px;color:var(--warn);border-left:2px solid var(--line);padding-left:10px}.nav button{padding-block:9px}.group-progress{display:none}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top"><h1>MCN Phase 1</h1><nav class="links page-tabs" aria-label="Điều hướng trang"><a href="#work" data-view="work" aria-current="page">Đầu việc</a><a href="#overview" data-view="overview">Tổng quan</a><a href="#documents" data-view="documents">Tài liệu</a></nav></header>
+<section class="overview page-view" id="overview" aria-labelledby="overview-title" hidden><h2 id="overview-title">Tổng quan</h2><p>Cho phép công ty MCN mời KOC vào hệ thống, quản lý thành viên và nhận phí quản lý từ hoa hồng của KOC.</p><dl class="overview-facts"><div><dt>Phạm vi</dt><dd>Backend, Admin và web Ambassador. Một dev làm toàn bộ, theo từng đầu ra có thể kiểm chứng.</dd></div><div><dt>Luồng chính</dt><dd>Admin kích hoạt MCN → MCN tạo link mời → KOC ký phụ lục → đối soát tách phí → chi tiền chung đợt.</dd></div><div><dt>Ba vai sử dụng</dt><dd>Admin quản lý hồ sơ và tiền; MCN mời/quản lý thành viên; KOC tham gia, báo rời và xem đối soát.</dd></div></dl><details class="overview-more"><summary>Phần không làm và điểm còn chờ</summary><p>Chưa làm đổi tỷ lệ, gia hạn, tạm dừng/chấm dứt MCN, hóa đơn trên hệ thống hay đợt chi MCN riêng. Xử lý khi phụ lục hết hạn còn để ngỏ.</p><a href="#pending">Xem các điểm cần xác nhận</a></details></section>
+<section class="page-view" id="work"><div class="progress-toolbar"><strong id="progress-text">0/55 đầu việc hoàn thành</strong><progress id="overall-progress" max="55" value="0" aria-label="Tiến độ toàn bộ task">0%</progress><span id="progress-percent">0%</span><span id="save-status" class="save-status" role="status" aria-live="polite"></span><button type="button" id="save-progress" class="expand" title="Tải một bản HTML chứa các dấu tick. Mở bản mới để tiếp tục theo dõi.">Lưu tiến độ</button></div>
+<div class="workspace">
+<aside class="side"><div><div class="nav-label">Nhóm công việc</div><nav class="nav" aria-label="Lọc nhóm công việc"><button type="button" id="filter-all" data-group="all" aria-pressed="true"><span>Tất cả đầu việc</span><span class="n"></span></button><button type="button" id="filter-profile" data-group="profile" aria-pressed="false"><span>Hồ sơ và kích hoạt</span><span class="n"></span></button><button type="button" id="filter-invite" data-group="invite" aria-pressed="false"><span>Đăng nhập và lời mời</span><span class="n"></span></button><button type="button" id="filter-annex" data-group="annex" aria-pressed="false"><span>Phụ lục và chờ ký</span><span class="n"></span></button><button type="button" id="filter-members" data-group="members" aria-pressed="false"><span>Thành viên và rời MCN</span><span class="n"></span></button><button type="button" id="filter-reconciliation" data-group="reconciliation" aria-pressed="false"><span>Đối soát và số dư</span><span class="n"></span></button><button type="button" id="filter-payment" data-group="payment" aria-pressed="false"><span>Chi trả và lịch sử</span><span class="n"></span></button><button type="button" id="filter-delivery" data-group="delivery" aria-pressed="false"><span>Thông báo và bàn giao</span><span class="n"></span></button></nav></div><p class="side-note">Toàn bộ MCN Phase 1; nhóm chỉ để tìm việc, không phải giai đoạn hoặc lịch làm.<br><br>Lọc nhóm không thay đổi % tổng. Muốn giữ dấu tick sau khi đóng trang, lưu và mở bản HTML mới.</p></aside>
+<main class="main">
+<p class="plan-scope">Toàn bộ MCN Phase 1. Mỗi dòng là một đầu ra riêng tại Backend, Admin hoặc Web; chỉ tick sau khi đã làm và tự test đạt. % theo số đầu việc, không phải % công sức.</p><div class="tools"><div class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4 4"></path></svg><input type="search" id="task-search" placeholder="Tìm đầu việc…" aria-label="Tìm đầu việc"></div><button type="button" id="expand-all" class="expand" aria-expanded="false">Mở chi tiết</button></div>
+<div class="groups" id="task-groups"></div><p id="search-empty" class="empty" hidden role="status">Không tìm thấy đầu việc. Thử từ khóa khác hoặc chọn tất cả.</p><p class="note footer" id="search-result" aria-live="polite"></p>
+<div class="decision section-only" id="confirmed"><h2>Quy tắc đã làm rõ</h2><ul><li>KOC ký xong phụ lục mới tính là đã đồng ý và trở thành thành viên.</li><li>Không lấy phí từ thu nhập trước ngày KOC tham gia MCN.</li><li>Thuế tính trên số chi sau phí MCN; từ 5 triệu/đợt chi thì khấu trừ 10%.</li><li>Một KOC chỉ thuộc một MCN. MCN vẫn xem được đối soát các kỳ hợp tác cũ.</li></ul></div>
+<div class="decision section-only" id="pending"><div class="pending">Cần xác nhận để làm đúng</div><h2>Các điểm còn chờ</h2><ul><li>MCN có được thấy tên KOC trong thời gian Chờ ký không?</li><li>KOC đang Chờ ký muốn hủy: thao tác ở đâu và phụ lục được hủy thế nào?</li><li>Luồng eKYC hiện tại đã bao gồm ký hợp đồng với AT chưa? Nếu chưa, cần xác định bước ký hợp đồng AT.</li><li>Xác định ngày phát sinh của lượt xem, nhiệm vụ và thưởng thêm để không lấy phí khoản trước ngày tham gia.</li><li>AT core cung cấp mẫu/mã phụ lục và kết quả ký; xác nhận tra ngân hàng, email và lưu hồ sơ riêng tư.</li></ul></div>
+<footer class="footer">Chưa làm trong phase này: đổi tỷ lệ, gia hạn, tạm dừng/chấm dứt MCN, hóa đơn và đợt chi MCN riêng. Cách xử lý khi phụ lục hết hạn vẫn còn để ngỏ.<br><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/techspec-mcn-phase1-2026-11-04.md" target="_blank" rel="noopener noreferrer">Xem techspec ↗</a></footer>
+</main></div></section>
+<section id="documents" class="page-view document-list" hidden aria-labelledby="documents-title"><h2 id="documents-title">Tài liệu</h2><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/prd-mcn-phase1-2026-11-04.md" target="_blank" rel="noopener noreferrer"><strong>PRD MCN Phase 1 ↗</strong><span>Phạm vi, chức năng và các câu hỏi nghiệp vụ.</span></a><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/techspec-mcn-phase1-2026-11-04.md" target="_blank" rel="noopener noreferrer"><strong>Techspec MCN Phase 1 ↗</strong><span>Dữ liệu, API, đối soát, chi trả và tích hợp.</span></a><a href="https://claude.ai/artifact/BVwnmqnqNZhjnX6pbXDikV#play-15dd8cd198dd" target="_blank" rel="noopener noreferrer"><strong>Phân tích và mock UI ↗</strong><span>Giao diện và các luồng bấm thử của ba vai.</span></a><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/meeting-261103.md" target="_blank" rel="noopener noreferrer"><strong>Biên bản họp 03/11 ↗</strong><span>Nội dung trao đổi và thu gọn phạm vi phase 1.</span></a><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/08-Sequence.md" target="_blank" rel="noopener noreferrer"><strong>08-Sequence ↗</strong><span>Luồng đầy đủ để tham chiếu; không phải toàn bộ phạm vi phase 1.</span></a><p class="footer">Phản hồi bổ sung đã chốt trên tab Tổng quan cần được đồng bộ lại vào tài liệu nguồn nếu tài liệu chưa cập nhật.</p></section>
+</div>
+<script type="application/json" id="saved-progress">{"done":[],"savedAt":null}</script>
+<script>
+let state;try{state=JSON.parse(document.getElementById('saved-progress').textContent)}catch(e){state={done:[],savedAt:null}}const previousDone=Array.isArray(state.done)?state.done:[];const completed=new Set();let dirty=false;
+const GROUPS=[
+ {
+  "id": "profile",
+  "name": "Hồ sơ và kích hoạt",
+  "tasks": [
+   {
+    "id": "mcn-data",
+    "area": "Backend",
+    "fr": "NFR-003/004",
+    "title": "Tạo dữ liệu nền MCN",
+    "scope": "5 collection và index cho hồ sơ, tài khoản, tài liệu, link, thành viên; không thêm loại tài khoản vào user.",
+    "done": "Đọc/ghi đúng; chặn một KOC có nhiều quan hệ mở.",
+    "blocker": ""
+   },
+   {
+    "id": "mcn-access",
+    "area": "Backend",
+    "fr": "FR-001/006/007",
+    "title": "Đăng ký quyền và phạm vi API",
+    "scope": "Quyền Admin, middleware MCN, kiểm đúng người và phạm vi MCN.",
+    "done": "Request trái quyền/khác MCN bị chặn.",
+    "blocker": ""
+   },
+   {
+    "id": "profile-api",
+    "area": "Backend",
+    "fr": "FR-001/002",
+    "title": "API quản lý hồ sơ MCN",
+    "scope": "Danh sách tìm tên/MST/email, lọc/phân trang, tạo và chi tiết; kiểm trùng.",
+    "done": "Tìm đúng; tạo thành Chờ kích hoạt; trùng bị chặn.",
+    "blocker": ""
+   },
+   {
+    "id": "list-admin",
+    "area": "Admin",
+    "fr": "FR-001",
+    "title": "Màn danh sách MCN",
+    "scope": "Menu/quyền, bảng đủ cột, tìm/lọc và mở chi tiết.",
+    "done": "Nối API, tìm/lọc và mở đúng hồ sơ.",
+    "blocker": ""
+   },
+   {
+    "id": "create-admin",
+    "area": "Admin",
+    "fr": "FR-002",
+    "title": "Form tạo MCN",
+    "scope": "Thông tin pháp nhân/MST/email, trường bổ sung, lỗi từng trường và mở chi tiết sau tạo.",
+    "done": "Tạo được; lỗi trùng hiển thị đúng. Q2 còn chờ chốt trường form.",
+    "blocker": ""
+   },
+   {
+    "id": "detail-admin",
+    "area": "Admin",
+    "fr": "FR-003/005/006",
+    "title": "Trang chi tiết MCN",
+    "scope": "Thông tin pháp nhân, trạng thái, khung tab Điều kiện kích hoạt/Hồ sơ pháp lý/Thành viên.",
+    "done": "Thông tin đúng MCN, tab đổi đúng trạng thái.",
+    "blocker": ""
+   },
+   {
+    "id": "file-api",
+    "area": "Backend",
+    "fr": "FR-003",
+    "title": "Upload và tải file riêng tư",
+    "scope": "Route tài liệu, kiểm loại/dung lượng, tải file có kiểm quyền.",
+    "done": "File sai bị chặn; trái quyền không tải được.",
+    "blocker": "Ops xác nhận nơi lưu; Q3 đang đề xuất PDF ≤20MB."
+   },
+   {
+    "id": "doc-api",
+    "area": "Backend",
+    "fr": "FR-003",
+    "title": "Lưu phiên bản hồ sơ pháp lý",
+    "scope": "Lưu file/ngày ký từng loại; bản hiện hành/lịch sử có người và giờ cập nhật.",
+    "done": "Cập nhật tạo bản mới, bản cũ còn nguyên.",
+    "blocker": ""
+   },
+   {
+    "id": "doc-admin",
+    "area": "Admin",
+    "fr": "FR-003",
+    "title": "Tab giấy tờ và lịch sử",
+    "scope": "Upload, xem/tải, cập nhật và lịch sử từng hồ sơ; không gồm ngân hàng.",
+    "done": "UI phản ánh đúng bản cũ/mới và lỗi upload.",
+    "blocker": ""
+   },
+   {
+    "id": "bank-api",
+    "area": "Backend",
+    "fr": "FR-004",
+    "title": "Tra và lưu ngân hàng công ty",
+    "scope": "So tên chuẩn hóa; lưu tài khoản và lý do khi lệch/không tra được, có lịch sử.",
+    "done": "Lệch/không tra được bắt lý do; khớp lưu được.",
+    "blocker": "AT xác nhận cách tra tài khoản công ty."
+   },
+   {
+    "id": "bank-admin",
+    "area": "Admin",
+    "fr": "FR-004",
+    "title": "Form ngân hàng MCN",
+    "scope": "Chọn bank, số tài khoản, Kiểm tra, hiện tên và lý do, Lưu.",
+    "done": "Không lưu thiếu lý do khi bắt buộc.",
+    "blocker": ""
+   },
+   {
+    "id": "activate-api",
+    "area": "Backend",
+    "fr": "FR-005",
+    "title": "API kích hoạt MCN",
+    "scope": "Kiểm 5 điều kiện và email, chuyển Hoạt động, tạo liên kết tài khoản theo email, lưu vết.",
+    "done": "Thiếu trả danh sách; đủ chỉ kích hoạt một lần. Email làm riêng.",
+    "blocker": ""
+   },
+   {
+    "id": "activate-admin",
+    "area": "Admin",
+    "fr": "FR-005",
+    "title": "Nút kích hoạt MCN",
+    "scope": "Gọi API, hiện thiếu điều kiện, cập nhật trạng thái/tab sau thành công.",
+    "done": "Lỗi không báo thành công; trang phản ánh kết quả thật.",
+    "blocker": ""
+   }
+  ]
+ },
+ {
+  "id": "invite",
+  "name": "Đăng nhập và lời mời",
+  "tasks": [
+   {
+    "id": "bind",
+    "area": "Backend",
+    "fr": "FR-005/007",
+    "title": "Gắn tài khoản đăng nhập với MCN",
+    "scope": "Bind email đã xác thực, user-partner, users/me trả MCN và quan hệ.",
+    "done": "Đúng email nhận đúng MCN; không bind nhầm/trùng.",
+    "blocker": ""
+   },
+   {
+    "id": "menu-web",
+    "area": "Web",
+    "fr": "FR-007/015/021",
+    "title": "Menu và khung quản lý MCN",
+    "scope": "Menu theo vai, route tĩnh, khung Thành viên/Lời mời/Đối soát.",
+    "done": "Đúng người thấy đúng mục; route không bị partner bắt nhầm.",
+    "blocker": ""
+   },
+   {
+    "id": "links-api",
+    "area": "Backend",
+    "fr": "FR-008/009",
+    "title": "API quản lý link mời",
+    "scope": "Mã ngẫu nhiên, tỷ lệ nguyên 1–99%, danh sách, số ký xong, tắt một chiều.",
+    "done": "Tỷ lệ sai bị chặn; tắt không mất thành viên.",
+    "blocker": ""
+   },
+   {
+    "id": "links-web",
+    "area": "Web",
+    "fr": "FR-008/009",
+    "title": "Màn quản lý link mời",
+    "scope": "Bảng link, modal tạo, sao chép, tắt, trạng thái và số tham gia.",
+    "done": "Thao tác đúng; không tự làm tròn tỷ lệ.",
+    "blocker": ""
+   },
+   {
+    "id": "invite-api",
+    "area": "Backend",
+    "fr": "FR-012",
+    "title": "API kiểm tra lời mời",
+    "scope": "Các tình huống login, link ngừng, thành viên cùng/khác MCN, tài khoản MCN và chờ lời mời khác.",
+    "done": "Trả đúng tình huống, không lộ dữ liệu user khác.",
+    "blocker": ""
+   },
+   {
+    "id": "invite-web",
+    "area": "Web",
+    "fr": "FR-012/013",
+    "title": "Trang lời mời",
+    "scope": "Tên MCN, tỷ lệ, thời hạn, ví dụ tiền, checkbox hiểu và các màn bị chặn.",
+    "done": "Không tiếp tục khi thiếu tick; trước ký chưa tính tham gia.",
+    "blocker": ""
+   },
+   {
+    "id": "return-login",
+    "area": "Web",
+    "fr": "FR-012",
+    "title": "Giữ code mời qua đăng nhập",
+    "scope": "Giữ mã qua login/điều khoản, quay lại đúng lời mời, không đè OAuth/referral.",
+    "done": "Người mới/cũ, refresh/back không mất ngữ cảnh.",
+    "blocker": ""
+   }
+  ]
+ },
+ {
+  "id": "annex",
+  "name": "Phụ lục và chờ ký",
+  "tasks": [
+   {
+    "id": "pending-api",
+    "area": "Backend",
+    "fr": "FR-013/014",
+    "title": "Tạo và hủy quan hệ Chờ ký",
+    "scope": "Lưu tỷ lệ, hạn 7 ngày; từ chối/hủy giải phóng quan hệ theo yêu cầu được chốt.",
+    "done": "Không có hai quan hệ mở; hủy không bị ký muộn kích hoạt lại.",
+    "blocker": "Chốt đường hủy Chờ ký và hủy phụ lục với AT."
+   },
+   {
+    "id": "annex-api",
+    "area": "Backend",
+    "fr": "FR-014",
+    "title": "Tạo phụ lục qua AT",
+    "scope": "Consent, eKYC/điều kiện hợp đồng gốc, loại hợp đồng và contract ID theo lần tham gia.",
+    "done": "Đúng link/contract; request lặp không tạo nhầm.",
+    "blocker": "Chờ mẫu/mã/trường AT; hợp đồng gốc và tài liệu consent."
+   },
+   {
+    "id": "sign-web",
+    "area": "Web",
+    "fr": "FR-014",
+    "title": "Màn Chờ ký và mở trang ký",
+    "scope": "Nội dung/hạn ký, checkbox chia sẻ, mở ký, loading/lỗi; hủy nếu được chốt.",
+    "done": "Thiếu consent không ký; không gọi người Chờ ký là đã tham gia.",
+    "blocker": "Hủy Chờ ký và quyền chia sẻ tên chưa chốt."
+   },
+   {
+    "id": "ekyc-web",
+    "area": "Web",
+    "fr": "FR-014",
+    "title": "Quay lại phụ lục sau eKYC",
+    "scope": "Dẫn định danh khi cần và giữ phụ lục để quay lại.",
+    "done": "Định danh xong tiếp tục đúng lời mời.",
+    "blocker": ""
+   },
+   {
+    "id": "sync-sign",
+    "area": "Backend",
+    "fr": "FR-014",
+    "title": "Đồng bộ kết quả ký",
+    "scope": "Endpoint khi quay lại và job tra contract; kiểm ID, trạng thái và thời điểm.",
+    "done": "Ký hợp lệ mới thành viên; không kích hoạt quan hệ đã hủy/quá hạn.",
+    "blocker": ""
+   },
+   {
+    "id": "sign-result",
+    "area": "Web",
+    "fr": "FR-014",
+    "title": "Hiển thị kết quả sau ký",
+    "scope": "Gọi sync, trạng thái xử lý/lỗi/thành viên và tải lại tài khoản.",
+    "done": "Ký xong mới tính đã đồng ý; không nhầm hợp đồng gốc với phụ lục.",
+    "blocker": ""
+   },
+   {
+    "id": "sign-job",
+    "area": "Backend",
+    "fr": "FR-014/022",
+    "title": "Job nhắc và quá hạn ký",
+    "scope": "Nhắc trước hạn, hết 7 ngày chuyển quá hạn, giải phóng quan hệ chờ.",
+    "done": "Chạy lại không nhắc trùng/ghi đè trạng thái đã kết thúc.",
+    "blocker": ""
+   }
+  ]
+ },
+ {
+  "id": "members",
+  "name": "Thành viên và rời MCN",
+  "tasks": [
+   {
+    "id": "members-api",
+    "area": "Backend",
+    "fr": "FR-006/009/010",
+    "title": "API thành viên và người Chờ ký",
+    "scope": "Danh sách, trạng thái, tỷ lệ, ngày theo MCN; giới hạn thông tin chờ/kết thúc.",
+    "done": "Đúng MCN và quyền dữ liệu.",
+    "blocker": "Mốc thấy tên người Chờ ký còn chờ chốt."
+   },
+   {
+    "id": "members-web",
+    "area": "Web",
+    "fr": "FR-009/010",
+    "title": "Màn thành viên và người Chờ ký",
+    "scope": "Bảng thành viên/bảng chờ, ngày hiệu lực, lý do kết thúc.",
+    "done": "Người ký xong không ở bảng chờ; quyền dữ liệu đúng.",
+    "blocker": ""
+   },
+   {
+    "id": "members-admin",
+    "area": "Admin",
+    "fr": "FR-006",
+    "title": "Tab thành viên chỉ xem",
+    "scope": "Tên, tỷ lệ, ngày, trạng thái và ghi chú trong hồ sơ MCN.",
+    "done": "Không có thao tác thêm/mời/chấm dứt thay MCN.",
+    "blocker": ""
+   },
+   {
+    "id": "terminate-api",
+    "area": "Backend",
+    "fr": "FR-011",
+    "title": "API chấm dứt thành viên",
+    "scope": "Kết thúc ngay kể cả đang báo rời; lưu vết và sự kiện thông báo.",
+    "done": "Đúng MCN mới thao tác; job không ghi đè kết quả.",
+    "blocker": ""
+   },
+   {
+    "id": "terminate-web",
+    "area": "Web",
+    "fr": "FR-011",
+    "title": "Modal chấm dứt thành viên",
+    "scope": "Cảnh báo hiệu lực, xác nhận, gọi API và cập nhật bảng.",
+    "done": "Không chấm dứt trước xác nhận; lỗi không báo thành công.",
+    "blocker": ""
+   },
+   {
+    "id": "leave-api",
+    "area": "Backend",
+    "fr": "FR-015",
+    "title": "API báo rời và rút lại",
+    "scope": "Ngày báo +15 ngày, 00:00 VN; rút lại trước hiệu lực, lưu lịch sử.",
+    "done": "Chặn sai trạng thái/quá hạn; đúng múi giờ.",
+    "blocker": ""
+   },
+   {
+    "id": "my-mcn-web",
+    "area": "Web",
+    "fr": "FR-015",
+    "title": "Màn MCN của tôi",
+    "scope": "Tên, tỷ lệ, phụ lục, trạng thái, Báo rời/Rút lại và ngày hiệu lực.",
+    "done": "Hiện kết quả API đúng; không quan hệ không thấy menu.",
+    "blocker": ""
+   },
+   {
+    "id": "leave-job",
+    "area": "Backend",
+    "fr": "FR-015/022",
+    "title": "Job kết thúc vào ngày rời",
+    "scope": "Chuyển theo mốc đã lưu, lý do và sự kiện thông báo hai bên.",
+    "done": "Chạy trễ không đổi ngày hiệu lực; retry không lặp. Không tự xử lý hết 12 tháng.",
+    "blocker": ""
+   }
+  ]
+ },
+ {
+  "id": "reconciliation",
+  "name": "Đối soát và số dư",
+  "tasks": [
+   {
+    "id": "fee-source",
+    "area": "Backend",
+    "fr": "FR-016",
+    "title": "Xác định thu nhập chịu phí",
+    "scope": "Tách content/milestone/bonus theo mốc tham gia; loại khoản trước ngày vào.",
+    "done": "Test trước/sau/vắt qua mốc tham gia đúng.",
+    "blocker": "Chốt ngày phát sinh từng loại; Q6 partner còn mở, tạm theo Ambassador."
+   },
+   {
+    "id": "fee-snapshot",
+    "area": "Backend",
+    "fr": "FR-016",
+    "title": "Lưu MCN, tỷ lệ và phí đối soát",
+    "scope": "Làm tròn tới đồng từng khoản; snapshot dùng chung lúc duyệt và xem.",
+    "done": "Net + phí bằng gốc; không tự tính lại theo quan hệ mới.",
+    "blocker": ""
+   },
+   {
+    "id": "credit",
+    "area": "Backend",
+    "fr": "FR-018",
+    "title": "Cộng tiền KOC và MCN",
+    "scope": "Ghi số dư có nguồn thành viên/kỳ; xử lý lỗi, chống trùng khi retry.",
+    "done": "Không cộng hai lần; không hoàn tất khi còn phí chưa ghi.",
+    "blocker": ""
+   },
+   {
+    "id": "recipients-api",
+    "area": "Backend",
+    "fr": "FR-017",
+    "title": "API người nhận và phí MCN",
+    "scope": "Aggregate/lọc/phân trang, chi tiết phí từng thành viên.",
+    "done": "Tổng/chi tiết khớp snapshot và trạng thái khoản.",
+    "blocker": ""
+   },
+   {
+    "id": "recipients-admin",
+    "area": "Admin",
+    "fr": "FR-017",
+    "title": "Tab Người nhận",
+    "scope": "Bảng KOC/MCN, tỷ lệ, hoa hồng, phí/net, lọc và mở chi tiết MCN.",
+    "done": "Nối đúng API, không tính số khác trên UI.",
+    "blocker": ""
+   },
+   {
+    "id": "approve-admin",
+    "area": "Admin",
+    "fr": "FR-017",
+    "title": "Thông tin MCN trong modal duyệt",
+    "scope": "Số MCN nhận phí và tổng liên quan trước Duyệt tất cả.",
+    "done": "Đúng kỳ, khóa bấm lặp, phản ánh lỗi API.",
+    "blocker": ""
+   }
+  ]
+ },
+ {
+  "id": "payment",
+  "name": "Chi trả và lịch sử",
+  "tasks": [
+   {
+    "id": "payment-api",
+    "area": "Backend",
+    "fr": "FR-019",
+    "title": "Tạo lệnh chi MCN",
+    "scope": "MCN hoạt động đủ bank/số dư; lấy MST/bank công ty, bỏ gate hợp đồng cá nhân.",
+    "done": "Đúng MCN vào đợt chung; creator không MCN không đổi.",
+    "blocker": ""
+   },
+   {
+    "id": "payment-tax",
+    "area": "Backend",
+    "fr": "FR-019",
+    "title": "Thuế khi tạo lệnh chi",
+    "scope": "KOC 10% số chi sau phí nếu từ 5 triệu; MCN không khấu trừ theo PRD.",
+    "done": "Test dưới/đúng/trên ngưỡng. Q8 thu nhập tự làm MCN cần ghi nhận chốt.",
+    "blocker": ""
+   },
+   {
+    "id": "payment-admin",
+    "area": "Admin",
+    "fr": "FR-019",
+    "title": "Loại người nhận trong đợt chi",
+    "scope": "Cột KOC/MCN ở bảng chi tiết, đúng tiền/thuế, fallback dữ liệu cũ.",
+    "done": "Dữ liệu cũ hiển thị đúng; phân biệt loại rõ.",
+    "blocker": ""
+   },
+   {
+    "id": "payment-export",
+    "area": "Backend",
+    "fr": "FR-019",
+    "title": "File ngân hàng có MCN",
+    "scope": "Thêm loại, MST/bank công ty theo lệnh chi.",
+    "done": "File khớp lệnh chi; không lấy MST cá nhân cho MCN.",
+    "blocker": ""
+   },
+   {
+    "id": "mcn-history-api",
+    "area": "Backend",
+    "fr": "FR-020",
+    "title": "API lịch sử đối soát MCN",
+    "scope": "Kỳ và chi tiết theo MCN, kể cả kỳ hợp tác cũ.",
+    "done": "Không thấy MCN khác/thu nhập mới ngoài quan hệ; khớp Admin.",
+    "blocker": ""
+   },
+   {
+    "id": "mcn-history-web",
+    "area": "Web",
+    "fr": "FR-020",
+    "title": "Màn MCN xem đối soát",
+    "scope": "Kỳ, ngày cộng, thành viên, tỷ lệ, hoa hồng và phí chi tiết.",
+    "done": "Đúng API; đủ loading/rỗng/lỗi; không xác nhận/báo sai.",
+    "blocker": ""
+   },
+   {
+    "id": "koc-history-api",
+    "area": "Backend",
+    "fr": "FR-021",
+    "title": "API lịch sử đối soát KOC",
+    "scope": "Kỳ và từng khoản theo user có/không MCN.",
+    "done": "Không xem người khác; khoản/phí/net khớp số đã ghi.",
+    "blocker": ""
+   },
+   {
+    "id": "koc-history-web",
+    "area": "Web",
+    "fr": "FR-021",
+    "title": "Màn KOC xem đối soát",
+    "scope": "Kỳ, từng khoản, MCN/tỷ lệ/phí/net và hướng dẫn hỗ trợ.",
+    "done": "Đúng tiền; không thêm xác nhận/báo sai.",
+    "blocker": ""
+   }
+  ]
+ },
+ {
+  "id": "delivery",
+  "name": "Thông báo và bàn giao",
+  "tasks": [
+   {
+    "id": "email",
+    "area": "Backend",
+    "fr": "FR-005/022",
+    "title": "Email kích hoạt MCN",
+    "scope": "Nối template AT, gửi sau kích hoạt, xử lý lỗi và tránh gửi lặp ngoài ý muốn.",
+    "done": "Email thật môi trường test đúng người/nội dung/link.",
+    "blocker": "Chờ template và quyền dịch vụ email AT."
+   },
+   {
+    "id": "notifications",
+    "area": "Backend",
+    "fr": "FR-022",
+    "title": "Thông báo MCN",
+    "scope": "Người nhận/nội dung theo sự kiện ký, nhắc hạn, rời/rút lại/chấm dứt và cộng phí.",
+    "done": "Đúng mốc đã chốt, không lặp; chưa ký chưa gọi là thành viên.",
+    "blocker": ""
+   },
+   {
+    "id": "notification-links",
+    "area": "Web",
+    "fr": "FR-022",
+    "title": "Điều hướng từ thông báo",
+    "scope": "Map tới lời mời/quan hệ/kỳ và giữ kiểm đăng nhập/quyền.",
+    "done": "Bấm đúng trang, không lộ dữ liệu khác người/MCN.",
+    "blocker": ""
+   },
+   {
+    "id": "test",
+    "area": "Kiểm thử",
+    "fr": "NFR-001–005",
+    "title": "Test xuyên suốt và hồi quy",
+    "scope": "Ba vai tới chi; tiền/retry/quyền/file/job; mobile, Windows, Mac.",
+    "done": "Có bằng chứng thật; không lỗi chặn; tách lỗi đỏ sẵn/ca chưa kiểm.",
+    "blocker": ""
+   },
+   {
+    "id": "dev-deploy",
+    "area": "Triển khai",
+    "fr": "FR-001–022",
+    "title": "Deploy dev và smoke",
+    "scope": "Cấu hình/index/file/email/tích hợp; kiểm sau deploy.",
+    "done": "Dev chạy được; chưa bật phí thật trước khi đường chi sẵn sàng.",
+    "blocker": ""
+   },
+   {
+    "id": "handover",
+    "area": "Bàn giao",
+    "fr": "FR-001–022",
+    "title": "Bàn giao QC và sửa phản hồi",
+    "scope": "Báo cáo/checklist/hướng dẫn; sửa QC và chạy lại.",
+    "done": "Đạt cổng bàn giao; nghiệm thu trước merge/phát hành.",
+    "blocker": ""
+   }
+  ]
+ }
+];
+const ALL_TASKS=GROUPS.flatMap(g=>g.tasks);const VALID_IDS=new Set(ALL_TASKS.map(t=>t.id));previousDone.forEach(id=>{if(VALID_IDS.has(id))completed.add(id)});const legacyDone=[...new Set([...(Array.isArray(state.legacyDone)?state.legacyDone:[]),...previousDone.filter(id=>!VALID_IDS.has(id))])];
+const root=document.getElementById('task-groups');
+function node(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
+const arrow='<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg>';
+GROUPS.forEach(g=>{const section=node('section');section.dataset.group=g.id;const head=node('div','group-head');const label=node('span','small');label.id='count-'+g.id;head.append(node('h2','',g.name),node('span','rule'),label);const progress=node('progress','group-progress');progress.id='progress-'+g.id;progress.max=g.tasks.length;progress.value=0;progress.setAttribute('aria-label','Tiến độ '+g.name);const list=node('div','tasks');g.tasks.forEach(t=>{const d=node('details','task');d.id='task-'+t.id;d.dataset.search=normalize([t.title,t.area,t.fr,t.scope,t.done].join(' '));const summary=node('summary');const copy=node('div','task-copy');const meta=node('div','task-meta');meta.append(node('span','area',t.area));copy.append(node('div','task-title',t.title));summary.append(copy,meta);summary.insertAdjacentHTML('beforeend',arrow);const detail=node('div','detail');const work=node('div','detail-row');const items=node('ul','work-items');items.append(node('li','',t.scope));work.append(node('span','label','Cần làm'),items);const finish=node('div','detail-row');finish.append(node('span','label','Xong khi'),node('p','',t.done));detail.append(work,finish);if(t.blocker)detail.append(node('div','task-blocker','Còn chờ: '+t.blocker));detail.append(node('div','task-ref',t.fr));d.append(summary,detail);const checkbox=node('input','task-toggle');checkbox.type='checkbox';checkbox.id='done-'+t.id;checkbox.checked=completed.has(t.id);checkbox.setAttribute('aria-label','Đánh dấu hoàn thành: '+t.title);checkbox.addEventListener('click',e=>e.stopPropagation());checkbox.addEventListener('change',()=>{if(checkbox.checked)completed.add(t.id);else completed.delete(t.id);dirty=true;updateProgress();document.getElementById('save-status').textContent='Chưa lưu';});summary.prepend(checkbox);list.append(d)});section.append(head,progress,list);root.append(section)});
+function progressOf(ids){const done=ids.filter(id=>completed.has(id)).length;return {done,total:ids.length,percent:ids.length?Math.round(done*100/ids.length):0};}
+function updateProgress(){const all=GROUPS.flatMap(g=>g.tasks.map(t=>t.id)),p=progressOf(all);document.getElementById('progress-text').textContent=p.done+'/'+p.total+' đầu việc hoàn thành';document.getElementById('progress-percent').textContent=p.percent+'%';document.getElementById('overall-progress').value=p.done;document.getElementById('overall-progress').max=p.total;document.getElementById('overall-progress').textContent=p.percent+'%';GROUPS.forEach(g=>{const p=progressOf(g.tasks.map(t=>t.id));document.getElementById('count-'+g.id).textContent=p.done+'/'+p.total+' · '+p.percent+'%';document.getElementById('progress-'+g.id).value=p.done;document.getElementById('progress-'+g.id).textContent=p.percent+'%';const n=document.querySelector('#filter-'+g.id+' .n');if(n)n.textContent=p.done+'/'+p.total;g.tasks.forEach(t=>document.getElementById('task-'+t.id).classList.toggle('completed',completed.has(t.id)))});document.querySelector('#filter-all .n').textContent=p.done+'/'+p.total;}
+updateProgress();if(legacyDone.length){document.getElementById('save-status').textContent='Cần rà lại dấu tick cũ';document.getElementById('save-status').title='Đã tách đầu việc. Không tự chuyển một tick gộp cũ thành nhiều task xong.';}if(state.savedAt&&!legacyDone.length){document.getElementById('save-status').textContent='Bản đã lưu';document.getElementById('save-status').title=new Date(state.savedAt).toLocaleString('vi-VN');}
+document.getElementById('save-progress').addEventListener('click',()=>{try{const data={done:[...completed].sort(),savedAt:new Date().toISOString(),legacyDone:legacyDone};const clone=document.documentElement.cloneNode(true);clone.querySelector('#saved-progress').textContent=JSON.stringify(data);clone.querySelector('#task-groups').replaceChildren();clone.querySelector('#save-status').textContent='Đang mở bản tiến độ đã lưu.';const blob=new Blob(['<!doctype html>\n'+clone.outerHTML],{type:'text/html;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='mcn-phase1-progress.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);dirty=false;document.getElementById('save-status').textContent='Đã yêu cầu tải';document.getElementById('save-status').title='Mở mcn-phase1-progress.html trong Downloads để tiếp tục. File gốc không tự ghi đè.';}catch(e){document.getElementById('save-status').textContent='Không tạo được bản lưu. Giữ trang này mở và thử lại.';}});window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
+let selected='all';const search=document.getElementById('task-search'),expand=document.getElementById('expand-all');
+function normalize(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').toLowerCase().trim()}
+function filter(){const q=normalize(search.value);let total=0;root.querySelectorAll('section').forEach(s=>{let n=0;s.querySelectorAll('.task').forEach(t=>{const show=(selected==='all'||selected===s.dataset.group)&&(!q||t.dataset.search.includes(q));t.hidden=!show;if(show)n++});s.hidden=n===0;total+=n});document.getElementById('search-empty').hidden=total!==0;document.getElementById('search-result').textContent=(q||selected!=='all')?'Đang xem '+total+' / '+ALL_TASKS.length+' đầu việc.':'';updateExpand()}
+function visible(){return [...root.querySelectorAll('.task')].filter(t=>!t.hidden&&!t.closest('section').hidden)}
+function updateExpand(){const a=visible(),all=a.length>0&&a.every(d=>d.open);expand.textContent=all?'Thu gọn chi tiết':'Mở chi tiết';expand.setAttribute('aria-expanded',String(all));expand.disabled=a.length===0;}
+document.querySelectorAll('[data-group]').forEach(b=>{if(b.tagName!=='BUTTON')return;b.addEventListener('click',()=>{selected=b.dataset.group;document.querySelectorAll('.nav button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));filter()})});search.addEventListener('input',filter);expand.addEventListener('click',()=>{const a=visible(),open=!a.every(d=>d.open);a.forEach(d=>d.open=open);updateExpand()});root.addEventListener('toggle',updateExpand,true);filter();
+// Thông tin tham khảo không chiếm chỗ của danh sách công việc.
+const overview=document.getElementById('overview');overview.append(document.getElementById('confirmed'),document.getElementById('pending'));function showView(){const key=['overview','documents','work'].includes(location.hash.slice(1))?location.hash.slice(1):location.hash==='#pending'?'overview':'work';document.querySelectorAll('.page-view').forEach(e=>e.hidden=e.id!==key);document.querySelectorAll('[data-view]').forEach(a=>{if(a.dataset.view===key)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});document.getElementById('confirmed').hidden=false;document.getElementById('pending').hidden=false;}window.addEventListener('hashchange',showView);showView();
+</script>
+</body>
+</html>
