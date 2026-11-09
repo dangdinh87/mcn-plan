@@ -265,7 +265,7 @@ const GROUPS=[
     "title": "Tích hợp tạo phụ lục với AT",
     "scope": "Lưu sự đồng ý chia sẻ dữ liệu; kiểm tra eKYC và hợp đồng B2C_AMBASSADOR đã ký; chặn khi KOC đã là thành viên MCN khác; tạo phụ lục đúng loại và lưu mã hợp đồng cho từng lần tham gia.",
     "done": "Đúng liên kết ký và mã hợp đồng; yêu cầu lặp không tạo phụ lục sai hoặc trùng; đã là thành viên MCN khác thì không tạo được phụ lục.",
-    "blocker": "Chờ mẫu/mã/trường phụ lục từ AT; tài liệu đồng ý chia sẻ dữ liệu."
+    "blocker": "AT cung cấp mã loại, mẫu phụ lục sau. Code trước phần lưu đồng ý, kiểm điều kiện, gọi econtract qua tham số loại hợp đồng; gắn mã thật khi có. Còn chờ tài liệu đồng ý chia sẻ dữ liệu."
    },
    {
     "id": "sign-web",
@@ -541,7 +541,7 @@ const GROUPS=[
     "title": "Gửi email kích hoạt MCN",
     "scope": "Tích hợp mẫu email AT; gửi sau kích hoạt, xử lý lỗi và tránh gửi trùng ngoài ý muốn.",
     "done": "Email trên môi trường kiểm thử đúng người nhận, nội dung và liên kết.",
-    "blocker": "Chờ template và quyền dịch vụ email AT."
+    "blocker": "AT cung cấp template code sau. Code trước luồng gửi qua AT email API với mã cấu hình; chưa có template thì kích hoạt vẫn chạy và báo Admin chưa gửi được email."
    },
    {
     "id": "notifications",
@@ -593,8 +593,8 @@ const GROUPS=[
 ];
 // Mức sẵn sàng để code (cập nhật 09/11/2026). Việc không có trong hai danh sách là "Rõ để code".
 const READINESS={
- partial:{label:'Code theo phương án tạm',ids:['create-admin','bind','file-api','bank-api','sign-web','sync-sign','members-api','fee-source','payment-tax','test']},
- blocked:{label:'Bị chặn',ids:['annex-api','email']}
+ partial:{label:'Code theo phương án tạm',ids:['create-admin','bind','file-api','bank-api','annex-api','sign-web','sync-sign','members-api','fee-source','payment-tax','email','test']},
+ blocked:{label:'Bị chặn',ids:[]}
 };
 function readinessOf(id){if(READINESS.blocked.ids.includes(id))return 'blocked';if(READINESS.partial.ids.includes(id))return 'partial';return 'ready';}
 const READY_LABEL={ready:'Rõ để code',partial:READINESS.partial.label,blocked:READINESS.blocked.label};
@@ -619,7 +619,7 @@ const bar=document.getElementById('readiness-bar');['ready','partial','blocked']
 const L=document.getElementById('readiness-list');
 [['ready','Rõ để code',c.ready,pc('ready'),'Yêu cầu và cách làm đã đủ, code và test ngay.'],
  ['partial','Code theo phương án tạm',c.partial,pc('partial'),'Code được, có thể sửa nhỏ khi chốt câu hỏi hoặc có tích hợp AT.'],
- ['blocked','Bị chặn',c.blocked,pc('blocked'),'Chờ AT cung cấp mẫu phụ lục, template email.']].forEach(([k,l,v,p,d])=>{const li=node('li');li.innerHTML='<strong>'+l+': '+v+'/'+n+' việc ('+p+'%)</strong> — '+d;L.append(li)});
+ ['blocked','Bị chặn',c.blocked,pc('blocked'),c.blocked?'Chưa code được cho tới khi có đầu vào.':'Không có việc nào bị chặn. Mẫu phụ lục và template email AT cung cấp sau, đã code trước phần nội bộ.']].forEach(([k,l,v,p,d])=>{const li=node('li');li.innerHTML='<strong>'+l+': '+v+'/'+n+' việc ('+p+'%)</strong> — '+d;L.append(li)});
 const li=node('li');li.innerHTML='<strong>Bắt đầu được: '+(c.ready+c.partial)+'/'+n+' việc ('+Math.round((c.ready+c.partial)*100/n)+'%)</strong>. Tìm "phương án tạm" hoặc "bị chặn" để lọc.';L.append(li);})();
 // Thông tin tham khảo không chiếm chỗ của danh sách công việc.
 const overview=document.getElementById('overview');overview.append(document.getElementById('confirmed'),document.getElementById('pending'));function showView(){const key=['overview','documents','work'].includes(location.hash.slice(1))?location.hash.slice(1):location.hash==='#pending'?'overview':'work';document.querySelectorAll('.page-view').forEach(e=>e.hidden=e.id!==key);document.querySelectorAll('[data-view]').forEach(a=>{if(a.dataset.view===key)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});document.getElementById('confirmed').hidden=false;document.getElementById('pending').hidden=false;}window.addEventListener('hashchange',showView);showView();
