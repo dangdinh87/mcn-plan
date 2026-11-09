@@ -35,16 +35,16 @@ body{font-family:"Be Vietnam Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",sa
 <body>
 <div class="shell">
 <header class="top"><h1>MCN Phase 1</h1><nav class="links page-tabs" aria-label="Điều hướng trang"><a href="#work" data-view="work" aria-current="page">Đầu việc</a><a href="#overview" data-view="overview">Tổng quan</a><a href="#documents" data-view="documents">Tài liệu</a></nav></header>
-<section class="overview page-view" id="overview" aria-labelledby="overview-title" hidden><h2 id="overview-title">Tổng quan</h2><p>Cho phép MCN (công ty hoặc cá nhân) mời KOC vào hệ thống, quản lý thành viên và nhận phí quản lý từ hoa hồng của KOC.</p><dl class="overview-facts"><div><dt>Phạm vi</dt><dd>Backend, Admin và web Ambassador. Một lập trình viên phụ trách toàn bộ, theo từng đầu ra có thể kiểm chứng.</dd></div><div><dt>Luồng chính</dt><dd>Admin kích hoạt MCN → MCN tạo link mời → KOC ký phụ lục → đối soát tách phí → chi tiền chung đợt.</dd></div><div><dt>Ba vai sử dụng</dt><dd>Admin quản lý hồ sơ và tiền; MCN mời/quản lý thành viên; KOC tham gia, báo rời và xem đối soát.</dd></div></dl><details class="overview-more"><summary>Phần không làm và điểm còn chờ</summary><p>Chưa làm đổi tỷ lệ, gia hạn, tạm dừng/chấm dứt MCN, hóa đơn trên hệ thống hay đợt chi MCN riêng. Xử lý khi phụ lục hết hạn còn để ngỏ. Bản này cập nhật theo bản mẫu ngày 09/11/2026.</p><a href="#pending">Xem các điểm cần xác nhận</a></details></section>
+<section class="overview page-view" id="overview" aria-labelledby="overview-title" hidden><h2 id="overview-title">Tổng quan</h2><p>Cho phép MCN (công ty hoặc cá nhân) mời KOC vào hệ thống, quản lý thành viên và nhận phí quản lý từ hoa hồng của KOC.</p><dl class="overview-facts"><div><dt>Phạm vi</dt><dd>Backend, Admin và web Ambassador. Một lập trình viên phụ trách toàn bộ, theo từng đầu ra có thể kiểm chứng.</dd></div><div><dt>Luồng chính</dt><dd>Admin kích hoạt MCN → MCN tạo link mời → KOC ký phụ lục → đối soát tách phí → chi tiền chung đợt.</dd></div><div><dt>Ba vai sử dụng</dt><dd>Admin quản lý hồ sơ và tiền; MCN mời/quản lý thành viên; KOC tham gia, báo rời và xem đối soát.</dd></div></dl><details class="overview-more"><summary>Phần không làm và điểm còn chờ</summary><p>Chưa làm đổi tỷ lệ, gia hạn, tạm dừng/chấm dứt MCN, hóa đơn trên hệ thống hay đợt chi MCN riêng. Hết 12 tháng phụ lục thì tự kết thúc. Bản này cập nhật theo bản mẫu ngày 09/11/2026.</p><a href="#pending">Xem các điểm cần xác nhận</a></details></section>
 <section class="page-view" id="work"><div class="progress-toolbar"><strong id="progress-text">0/55 đầu việc hoàn thành</strong><progress id="overall-progress" max="55" value="0" aria-label="Tiến độ toàn bộ task">0%</progress><span id="progress-percent">0%</span><span id="save-status" class="save-status" role="status" aria-live="polite"></span><button type="button" id="save-progress" class="expand" title="Tải bản HTML chứa trạng thái hoàn thành. Dùng bản đã tải cho lần theo dõi tiếp theo.">Xuất tiến độ</button></div>
 <div class="workspace">
 <aside class="side"><div><div class="nav-label">Nhóm công việc</div><label class="mobile-group-label" for="mobile-group">Nhóm công việc</label><select id="mobile-group" class="mobile-group" aria-label="Lọc nhóm công việc"></select><nav class="nav" aria-label="Lọc nhóm công việc"><button type="button" id="filter-all" data-group="all" aria-pressed="true"><span>Tất cả đầu việc</span><span class="n"></span></button><button type="button" id="filter-profile" data-group="profile" aria-pressed="false"><span>Hồ sơ và kích hoạt</span><span class="n"></span></button><button type="button" id="filter-invite" data-group="invite" aria-pressed="false"><span>Đăng nhập và lời mời</span><span class="n"></span></button><button type="button" id="filter-annex" data-group="annex" aria-pressed="false"><span>Phụ lục và chờ ký</span><span class="n"></span></button><button type="button" id="filter-members" data-group="members" aria-pressed="false"><span>Thành viên và rời MCN</span><span class="n"></span></button><button type="button" id="filter-reconciliation" data-group="reconciliation" aria-pressed="false"><span>Đối soát và số dư</span><span class="n"></span></button><button type="button" id="filter-payment" data-group="payment" aria-pressed="false"><span>Chi trả và lịch sử</span><span class="n"></span></button><button type="button" id="filter-delivery" data-group="delivery" aria-pressed="false"><span>Thông báo và bàn giao</span><span class="n"></span></button></nav></div><p class="side-note">Toàn bộ MCN Phase 1; nhóm chỉ để tìm việc, không phải giai đoạn hoặc lịch làm.<br><br>Lọc nhóm không thay đổi % tổng. Muốn giữ dấu tick sau khi đóng trang, lưu và mở bản HTML mới.</p></aside>
 <main class="main">
 <p class="plan-scope">Mỗi đầu việc có phạm vi và tiêu chí hoàn thành riêng. Đánh dấu sau khi triển khai và tự kiểm thử đạt. Tiến độ tính theo số đầu việc, không theo công sức.</p><div class="tools"><div class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4 4"></path></svg><input type="search" id="task-search" placeholder="Tìm đầu việc…" aria-label="Tìm đầu việc"></div><button type="button" id="expand-all" class="expand" aria-expanded="false">Mở rộng tất cả</button></div>
 <div class="groups" id="task-groups"></div><p id="search-empty" class="empty" hidden role="status">Không tìm thấy đầu việc. Thử từ khóa khác hoặc chọn tất cả.</p><p class="note footer" id="search-result" aria-live="polite"></p>
-<div class="decision section-only" id="confirmed"><h2>Quy tắc nghiệp vụ đã xác nhận</h2><ul><li>MCN có hai loại Công ty và Cá nhân, đi cùng một luồng; loại không đổi sau khi tạo.</li><li>Tỷ lệ phí của link là số nguyên 0–100%. Link không tự hết hạn, MCN tự tắt.</li><li>KOC ký xong phụ lục mới tính là đã đồng ý và trở thành thành viên.</li><li>Không lấy phí từ thu nhập trước ngày KOC tham gia MCN.</li><li>Thuế KOC tính trên số chi sau phí MCN; từ 5 triệu/đợt chi thì khấu trừ 10%. MCN công ty không khấu trừ.</li><li>Một KOC chỉ thuộc một MCN. MCN vẫn xem được đối soát các kỳ hợp tác cũ.</li></ul></div>
-<div class="decision section-only" id="pending"><div class="pending">Yêu cầu chưa được xác nhận</div><h2>Phụ thuộc và câu hỏi mở</h2><ul><li>MCN có được thấy tên KOC trong thời gian Chờ ký không?</li><li>KOC đang Chờ ký muốn hủy: thao tác ở đâu và phụ lục được hủy thế nào?</li><li>Luồng eKYC hiện tại đã bao gồm ký hợp đồng với AT chưa? Nếu chưa, cần xác định bước ký hợp đồng AT.</li><li>Xác định ngày phát sinh của lượt xem, nhiệm vụ và thưởng thêm để không lấy phí khoản trước ngày tham gia.</li><li>Hết 12 tháng phụ lục: tự kết thúc hay giữ nguyên quan hệ?</li><li>MCN cá nhân: khấu trừ thuế chung ngưỡng và mức 10% như KOC? Chứng từ khấu trừ cấp thế nào? Bản mẫu đang làm: khấu trừ như KOC, chứng từ ngoài hệ thống.</li><li>MCN cá nhân có được dùng email của tài khoản creator đang có không? Bản mẫu đang làm: không.</li><li>AT core cung cấp mẫu/mã phụ lục và kết quả ký; xác nhận tra ngân hàng, email và lưu hồ sơ riêng tư.</li><li>Đồng bộ tài liệu: bản mẫu còn ghi ngưỡng thuế 2 triệu và PRD còn ghi tỷ lệ 1–99%, chỉ có MCN công ty.</li></ul></div>
-<footer class="footer">Chưa làm trong phase này: đổi tỷ lệ, gia hạn, tạm dừng/chấm dứt MCN, hóa đơn và đợt chi MCN riêng. Cách xử lý khi phụ lục hết hạn vẫn còn để ngỏ.<br><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/techspec-mcn-phase1-2026-11-04.md" target="_blank" rel="noopener noreferrer">Xem techspec ↗</a></footer>
+<div class="decision section-only" id="confirmed"><h2>Quy tắc nghiệp vụ đã xác nhận</h2><ul><li>MCN có hai loại Công ty và Cá nhân, đi cùng một luồng; loại không đổi sau khi tạo.</li><li>Tỷ lệ phí của link là số nguyên 0–100%. Link không tự hết hạn, MCN tự tắt.</li><li>KOC ký xong phụ lục mới tính là đã đồng ý và trở thành thành viên. Chờ ký chưa phải thành viên: KOC vẫn được đồng ý lời mời của MCN khác, không cần hủy. Ký xong MCN B thì không ký được phụ lục MCN A nữa.</li><li>Hết 12 tháng phụ lục: tự kết thúc, ngừng trích phí. Muốn tiếp tục thì ký lại qua link mời mới.</li><li>KOC chưa eKYC hoặc chưa ký hợp đồng gốc B2C_AMBASSADOR thì dẫn sang trang Hợp đồng điện tử có sẵn (eKYC → MST → ký), xong quay lại ký phụ lục.</li><li>Không lấy phí từ thu nhập trước ngày KOC tham gia MCN.</li><li>Thuế KOC tính trên số chi sau phí MCN; từ 5 triệu/đợt chi thì khấu trừ 10%. MCN công ty không khấu trừ.</li><li>Một KOC chỉ thuộc một MCN. MCN vẫn xem được đối soát các kỳ hợp tác cũ.</li></ul></div>
+<div class="decision section-only" id="pending"><div class="pending">Yêu cầu chưa được xác nhận</div><h2>Phụ thuộc và câu hỏi mở</h2><ul><li>MCN có được thấy tên KOC trong thời gian Chờ ký không? KOC có thể chờ ký nhiều MCN cùng lúc nên mỗi MCN đó đều thấy tên nếu cho phép.</li><li>Thuế MCN cá nhân: họp thứ Ba 10/11 chốt. Tạm làm như KOC (10% khi số chi trong đợt từ 5 triệu), chứng từ ngoài hệ thống.</li><li>Ngày phát sinh thưởng thêm: đề xuất dùng ngày tạo khoản (createdAt), cần Vinh xác nhận. Thưởng view/mốc dùng createdAt của từng bản ghi thưởng.</li><li>MCN cá nhân có được dùng email của tài khoản creator đang có không? Bản mẫu đang làm: không.</li><li>AT core cung cấp mẫu/mã phụ lục và kết quả ký; xác nhận tra ngân hàng, email và lưu hồ sơ riêng tư.</li><li>Đồng bộ tài liệu: bản mẫu còn ghi ngưỡng thuế 2 triệu và PRD còn ghi tỷ lệ 1–99%, chỉ có MCN công ty.</li></ul></div>
+<footer class="footer">Chưa làm trong phase này: đổi tỷ lệ, gia hạn, tạm dừng/chấm dứt MCN, hóa đơn và đợt chi MCN riêng. Hết 12 tháng phụ lục thì quan hệ tự kết thúc.<br><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/techspec-mcn-phase1-2026-11-04.md" target="_blank" rel="noopener noreferrer">Xem techspec ↗</a></footer>
 </main></div></section>
 <section id="documents" class="page-view document-list" hidden aria-labelledby="documents-title"><h2 id="documents-title">Tài liệu</h2><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/prd-mcn-phase1-2026-11-04.md" target="_blank" rel="noopener noreferrer"><strong>PRD MCN Phase 1 ↗</strong><span>Phạm vi, chức năng và các câu hỏi nghiệp vụ.</span></a><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/techspec-mcn-phase1-2026-11-04.md" target="_blank" rel="noopener noreferrer"><strong>Techspec MCN Phase 1 ↗</strong><span>Dữ liệu, API, đối soát, chi trả và tích hợp.</span></a><a href="https://claude.ai/artifact/BVwnmqnqNZhjnX6pbXDikV#play-15dd8cd198dd" target="_blank" rel="noopener noreferrer"><strong>Phân tích và mock UI ↗</strong><span>Giao diện và các luồng bấm thử của ba vai.</span></a><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/meeting-261103.md" target="_blank" rel="noopener noreferrer"><strong>Biên bản họp 03/11 ↗</strong><span>Nội dung trao đổi và thu gọn phạm vi phase 1.</span></a><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/08-Sequence.md" target="_blank" rel="noopener noreferrer"><strong>08-Sequence ↗</strong><span>Luồng đầy đủ để tham chiếu; không phải toàn bộ phạm vi phase 1.</span></a><p class="footer">Các quyết định bổ sung trong mục Tổng quan cần được cập nhật vào PRD và đặc tả kỹ thuật.</p></section>
 </div>
@@ -62,7 +62,7 @@ const GROUPS=[
     "fr": "NFR-003/004",
     "title": "Khai báo mô hình dữ liệu và chỉ mục MCN",
     "scope": "Khai báo 5 collection và các chỉ mục cho hồ sơ MCN, tài khoản, tài liệu pháp lý, liên kết mời và quan hệ thành viên. Hồ sơ có loại Công ty/Cá nhân và mã định danh (MST hoặc CCCD) duy nhất. Không thêm loại tài khoản vào user.",
-    "done": "Kiểm thử đọc/ghi đạt; chỉ mục duy nhất ngăn một KOC có nhiều quan hệ đang mở.",
+    "done": "Kiểm thử đọc/ghi đạt; chỉ mục duy nhất ngăn một KOC có hai quan hệ Đang hợp tác/Đang báo rời; Chờ ký không bị giới hạn số lượng.",
     "blocker": ""
    },
    {
@@ -220,7 +220,7 @@ const GROUPS=[
     "area": "Backend",
     "fr": "FR-012",
     "title": "API kiểm tra điều kiện tham gia MCN",
-    "scope": "Kiểm tra đăng nhập, hiệu lực liên kết, quan hệ cùng/khác MCN, tài khoản MCN và lời mời đang chờ khác.",
+    "scope": "Kiểm tra đăng nhập, hiệu lực liên kết, đang là thành viên MCN này/MCN khác, tài khoản MCN và đã chờ ký chính link này. Đang chờ ký MCN khác vẫn được đồng ý.",
     "done": "Trả đúng trạng thái theo từng tình huống; không tiết lộ dữ liệu tài khoản khác.",
     "blocker": ""
    },
@@ -253,35 +253,35 @@ const GROUPS=[
     "area": "Backend",
     "fr": "FR-013/014",
     "title": "API quản lý quan hệ Chờ ký",
-    "scope": "Lưu tỷ lệ và hạn ký 7 ngày; xử lý từ chối/hủy để giải phóng quan hệ theo yêu cầu được xác nhận.",
-    "done": "Không tồn tại hai quan hệ mở; kết quả ký đến muộn không kích hoạt quan hệ đã hủy.",
-    "blocker": "Chốt đường hủy Chờ ký và hủy phụ lục với AT."
+    "scope": "Lưu tỷ lệ và hạn ký 7 ngày; cho nhiều quan hệ Chờ ký với các MCN khác nhau. Khi một phụ lục ký xong, các Chờ ký còn lại chuyển Hết hiệu lực (đã tham gia MCN khác). Không có thao tác hủy.",
+    "done": "KOC chờ ký A và B cùng lúc; ký B xong thì A không ký/kích hoạt được, kể cả kết quả ký A đến muộn hoặc hai bên ký gần như đồng thời.",
+    "blocker": ""
    },
    {
     "id": "annex-api",
     "area": "Backend",
     "fr": "FR-014",
     "title": "Tích hợp tạo phụ lục với AT",
-    "scope": "Lưu sự đồng ý chia sẻ dữ liệu; kiểm tra eKYC và hợp đồng gốc; tạo phụ lục đúng loại và lưu mã hợp đồng cho từng lần tham gia.",
-    "done": "Đúng liên kết ký và mã hợp đồng; yêu cầu lặp không tạo phụ lục sai hoặc trùng.",
-    "blocker": "Chờ mẫu/mã/trường AT; hợp đồng gốc và tài liệu đồng ý chia sẻ dữ liệu."
+    "scope": "Lưu sự đồng ý chia sẻ dữ liệu; kiểm tra eKYC và hợp đồng B2C_AMBASSADOR đã ký; chặn khi KOC đã là thành viên MCN khác; tạo phụ lục đúng loại và lưu mã hợp đồng cho từng lần tham gia.",
+    "done": "Đúng liên kết ký và mã hợp đồng; yêu cầu lặp không tạo phụ lục sai hoặc trùng; đã là thành viên MCN khác thì không tạo được phụ lục.",
+    "blocker": "Chờ mẫu/mã/trường phụ lục từ AT; tài liệu đồng ý chia sẻ dữ liệu."
    },
    {
     "id": "sign-web",
     "area": "Web",
     "fr": "FR-014",
     "title": "Giao diện Chờ ký và ký phụ lục",
-    "scope": "Nội dung, hạn ký, xác nhận chia sẻ dữ liệu, mở trang ký và trạng thái tải/lỗi; thao tác hủy theo quyết định được xác nhận.",
+    "scope": "Nội dung, hạn ký, xác nhận chia sẻ dữ liệu, mở trang ký và trạng thái tải/lỗi; liệt kê các lời mời đang chờ ký nếu có nhiều; báo Hết hiệu lực khi đã tham gia MCN khác.",
     "done": "Thiếu sự đồng ý chia sẻ dữ liệu không được ký; người Chờ ký chưa được tính là thành viên.",
-    "blocker": "Hủy Chờ ký và quyền chia sẻ tên chưa chốt."
+    "blocker": "Quyền MCN thấy tên người Chờ ký chưa chốt."
    },
    {
     "id": "ekyc-web",
     "area": "Web",
     "fr": "FR-014",
     "title": "Khôi phục luồng ký sau eKYC",
-    "scope": "Điều hướng đến định danh khi cần và giữ phụ lục đang chờ để tiếp tục.",
-    "done": "Hoàn tất định danh xong tiếp tục đúng phụ lục và lời mời.",
+    "scope": "Chưa eKYC hoặc chưa ký hợp đồng B2C_AMBASSADOR thì dẫn sang trang /hop-dong-dien-tu có sẵn, giữ lời mời đang chờ để quay lại ký phụ lục.",
+    "done": "Hoàn tất eKYC và hợp đồng gốc xong tiếp tục đúng phụ lục và lời mời.",
     "blocker": ""
    },
    {
@@ -290,7 +290,7 @@ const GROUPS=[
     "fr": "FR-014",
     "title": "Đồng bộ trạng thái ký phụ lục",
     "scope": "API đồng bộ khi quay lại và tác vụ định kỳ truy vấn hợp đồng; kiểm tra mã, trạng thái và thời điểm ký.",
-    "done": "Chỉ ký hợp lệ mới tạo thành viên; không kích hoạt quan hệ đã hủy hoặc quá hạn.",
+    "done": "Chỉ ký hợp lệ mới tạo thành viên; không kích hoạt quan hệ quá hạn, hết hiệu lực hoặc khi KOC đã là thành viên MCN khác.",
     "blocker": ""
    },
    {
@@ -385,8 +385,8 @@ const GROUPS=[
     "area": "Backend",
     "fr": "FR-015/022",
     "title": "Tác vụ kết thúc quan hệ đến hạn rời",
-    "scope": "Chuyển trạng thái theo thời điểm đã lưu, ghi lý do và phát sự kiện thông báo hai bên.",
-    "done": "Chạy trễ không thay đổi thời điểm hiệu lực; chạy lại không xử lý trùng. Chưa tự bổ sung xử lý hết 12 tháng.",
+    "scope": "Kết thúc quan hệ khi đến ngày rời hoặc hết 12 tháng phụ lục (lý do riêng: KOC rời / hết hạn phụ lục), theo thời điểm đã lưu; phát sự kiện thông báo hai bên.",
+    "done": "Chạy trễ không thay đổi thời điểm hiệu lực; chạy lại không xử lý trùng; phụ lục hết hạn trước ngày rời thì kết thúc theo hết hạn; ngừng trích phí từ ngày kết thúc.",
     "blocker": ""
    }
   ]
