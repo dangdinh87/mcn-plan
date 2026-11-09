@@ -43,7 +43,7 @@ body{font-family:"Be Vietnam Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",sa
 <p class="plan-scope">Mỗi đầu việc có phạm vi và tiêu chí hoàn thành riêng. Đánh dấu sau khi triển khai và tự kiểm thử đạt. Tiến độ tính theo số đầu việc, không theo công sức.</p><div class="tools"><div class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4 4"></path></svg><input type="search" id="task-search" placeholder="Tìm đầu việc…" aria-label="Tìm đầu việc"></div><button type="button" id="expand-all" class="expand" aria-expanded="false">Mở rộng tất cả</button></div>
 <div class="groups" id="task-groups"></div><p id="search-empty" class="empty" hidden role="status">Không tìm thấy đầu việc. Thử từ khóa khác hoặc chọn tất cả.</p><p class="note footer" id="search-result" aria-live="polite"></p>
 <div class="decision section-only" id="confirmed"><h2>Quy tắc nghiệp vụ đã xác nhận</h2><ul><li>MCN có hai loại Công ty và Cá nhân, đi cùng một luồng; loại không đổi sau khi tạo.</li><li>Tỷ lệ phí của link là số nguyên 0–100%. Link không tự hết hạn, MCN tự tắt.</li><li>KOC ký xong phụ lục mới tính là đã đồng ý và trở thành thành viên. Chờ ký chưa phải thành viên: KOC vẫn được đồng ý lời mời của MCN khác, không cần hủy. Ký xong MCN B thì không ký được phụ lục MCN A nữa.</li><li>Hết 12 tháng phụ lục: tự kết thúc, ngừng trích phí. Muốn tiếp tục thì ký lại qua link mời mới.</li><li>KOC chưa eKYC hoặc chưa ký hợp đồng gốc B2C_AMBASSADOR thì dẫn sang trang Hợp đồng điện tử có sẵn (eKYC → MST → ký), xong quay lại ký phụ lục.</li><li>Không lấy phí từ thu nhập trước ngày KOC tham gia MCN.</li><li>Thuế KOC tính trên số chi sau phí MCN; từ 5 triệu/đợt chi thì khấu trừ 10%. MCN công ty không khấu trừ.</li><li>Một KOC chỉ thuộc một MCN. MCN vẫn xem được đối soát các kỳ hợp tác cũ.</li></ul></div>
-<div class="decision section-only" id="pending"><div class="pending">Yêu cầu chưa được xác nhận</div><h2>Phụ thuộc và câu hỏi mở</h2><ul><li>MCN có được thấy tên KOC trong thời gian Chờ ký không? KOC có thể chờ ký nhiều MCN cùng lúc nên mỗi MCN đó đều thấy tên nếu cho phép.</li><li>Thuế MCN cá nhân: họp thứ Ba 10/11 chốt. Tạm làm như KOC (10% khi số chi trong đợt từ 5 triệu), chứng từ ngoài hệ thống.</li><li>Ngày phát sinh thưởng thêm: đề xuất dùng ngày tạo khoản (createdAt), cần Vinh xác nhận. Thưởng view/mốc dùng createdAt của từng bản ghi thưởng.</li><li>MCN cá nhân có được dùng email của tài khoản creator đang có không? Bản mẫu đang làm: không.</li><li>AT core cung cấp mẫu/mã phụ lục và kết quả ký; xác nhận tra ngân hàng, email và lưu hồ sơ riêng tư.</li><li>Đồng bộ tài liệu: bản mẫu còn ghi ngưỡng thuế 2 triệu và PRD còn ghi tỷ lệ 1–99%, chỉ có MCN công ty.</li></ul></div>
+<div class="decision section-only" id="pending"><div class="pending">Yêu cầu chưa được xác nhận</div><h2>Phụ thuộc và câu hỏi mở</h2><ul><li>MCN có được thấy tên KOC trong thời gian Chờ ký không? KOC có thể chờ ký nhiều MCN cùng lúc nên mỗi MCN đó đều thấy tên nếu cho phép.</li><li>Thuế MCN cá nhân: họp thứ Ba 10/11 chốt. Tạm làm như KOC (10% khi số chi trong đợt từ 5 triệu), chứng từ ngoài hệ thống.</li><li>Ngày phát sinh thưởng thêm: đề xuất dùng ngày tạo khoản (createdAt), cần Vinh xác nhận. Thưởng view/mốc dùng createdAt của từng bản ghi thưởng.</li><li>MCN cá nhân có được dùng email của tài khoản creator đang có không? Bản mẫu đang làm: không.</li><li>AT core cung cấp mẫu/mã phụ lục và kết quả ký; xác nhận tra ngân hàng, email và lưu hồ sơ riêng tư.</li><li>Phạm vi partner (Q6): tạm chỉ partner Ambassador.</li><li>Đồng bộ tài liệu: bản mẫu còn ghi ngưỡng thuế 2 triệu; PRD còn ghi tỷ lệ 1–99%, chỉ có MCN công ty, mỗi KOC một quan hệ mở kể cả Chờ ký.</li></ul></div>
 <footer class="footer">Chưa làm trong phase này: đổi tỷ lệ, gia hạn, tạm dừng/chấm dứt MCN, hóa đơn và đợt chi MCN riêng. Hết 12 tháng phụ lục thì quan hệ tự kết thúc.<br><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/techspec-mcn-phase1-2026-11-04.md" target="_blank" rel="noopener noreferrer">Xem techspec ↗</a></footer>
 </main></div></section>
 <section id="documents" class="page-view document-list" hidden aria-labelledby="documents-title"><h2 id="documents-title">Tài liệu</h2><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/prd-mcn-phase1-2026-11-04.md" target="_blank" rel="noopener noreferrer"><strong>PRD MCN Phase 1 ↗</strong><span>Phạm vi, chức năng và các câu hỏi nghiệp vụ.</span></a><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/techspec-mcn-phase1-2026-11-04.md" target="_blank" rel="noopener noreferrer"><strong>Techspec MCN Phase 1 ↗</strong><span>Dữ liệu, API, đối soát, chi trả và tích hợp.</span></a><a href="https://claude.ai/artifact/BVwnmqnqNZhjnX6pbXDikV#play-15dd8cd198dd" target="_blank" rel="noopener noreferrer"><strong>Phân tích và mock UI ↗</strong><span>Giao diện và các luồng bấm thử của ba vai.</span></a><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/meeting-261103.md" target="_blank" rel="noopener noreferrer"><strong>Biên bản họp 03/11 ↗</strong><span>Nội dung trao đổi và thu gọn phạm vi phase 1.</span></a><a href="https://github.com/viewboost/accesstrade-docs/blob/main/mcn/08-Sequence.md" target="_blank" rel="noopener noreferrer"><strong>08-Sequence ↗</strong><span>Luồng đầy đủ để tham chiếu; không phải toàn bộ phạm vi phase 1.</span></a><p class="footer">Các quyết định bổ sung trong mục Tổng quan cần được cập nhật vào PRD và đặc tả kỹ thuật.</p></section>
@@ -98,7 +98,7 @@ const GROUPS=[
     "fr": "FR-002",
     "title": "Biểu mẫu tạo hồ sơ MCN",
     "scope": "Chọn loại MCN. Công ty: tên pháp nhân, MST, địa chỉ trụ sở, người đại diện. Cá nhân: họ tên theo CCCD, số CCCD, địa chỉ liên hệ. Cả hai: email đăng nhập, SĐT; hiển thị lỗi theo trường và mở hồ sơ sau khi tạo.",
-    "done": "Tạo hồ sơ thành công; lỗi dữ liệu trùng hiển thị đúng. Danh sách trường Q2 vẫn cần xác nhận.",
+    "done": "Tạo hồ sơ thành công cho cả hai loại; trường hiển thị đổi theo loại; lỗi dữ liệu trùng hiển thị đúng. Danh sách trường theo bản mẫu 09/11, cần AT xác nhận lần cuối.",
     "blocker": ""
    },
    {
@@ -106,7 +106,7 @@ const GROUPS=[
     "area": "Admin",
     "fr": "FR-003/005/006",
     "title": "Trang chi tiết MCN",
-    "scope": "Thông tin pháp nhân, trạng thái, khung tab Điều kiện kích hoạt/Hồ sơ pháp lý/Thành viên.",
+    "scope": "Loại MCN, thông tin định danh theo loại (pháp nhân hoặc cá nhân), trạng thái, khung tab Điều kiện kích hoạt/Hồ sơ pháp lý/Thành viên.",
     "done": "Thông tin đúng MCN, tab đổi đúng trạng thái.",
     "blocker": ""
    },
@@ -144,7 +144,7 @@ const GROUPS=[
     "title": "API xác minh và lưu tài khoản ngân hàng",
     "scope": "Chuẩn hóa và đối chiếu tên chủ tài khoản với tên pháp nhân hoặc họ tên theo CCCD; lưu thông tin ngân hàng, lý do xác nhận ngoại lệ và lịch sử thay đổi.",
     "done": "Tên khớp được lưu; trường hợp không khớp hoặc không xác minh được bắt buộc có lý do.",
-    "blocker": "AT xác nhận cách tra tài khoản công ty."
+    "blocker": "AT xác nhận cách tra tên chủ tài khoản của MCN (không có SSO user). Chưa có thì nhập tay kèm lý do."
    },
    {
     "id": "bank-admin",
@@ -184,8 +184,8 @@ const GROUPS=[
     "area": "Backend",
     "fr": "FR-005/007",
     "title": "Liên kết tài khoản đăng nhập với MCN",
-    "scope": "Liên kết bằng email đã xác thực; thiết lập user-partner và bổ sung thông tin MCN, quan hệ thành viên vào /users/me.",
-    "done": "Liên kết đúng tài khoản và MCN; không phát sinh liên kết nhầm hoặc trùng.",
+    "scope": "Liên kết bằng email đã xác thực; thiết lập user-partner và bổ sung vào /users/me: thông tin MCN của tài khoản, quan hệ thành viên đang có và danh sách lời mời đang chờ ký.",
+    "done": "Liên kết đúng tài khoản và MCN; không phát sinh liên kết nhầm hoặc trùng; email đã thuộc tài khoản creator thì không dùng làm email MCN.",
     "blocker": ""
    },
    {
@@ -307,7 +307,7 @@ const GROUPS=[
     "area": "Backend",
     "fr": "FR-014/022",
     "title": "Tác vụ nhắc hạn và hết hạn ký",
-    "scope": "Nhắc trước hạn; chuyển Quá hạn ký sau 7 ngày và giải phóng quan hệ chờ.",
+    "scope": "Nhắc trước hạn 2 ngày; chuyển Quá hạn ký sau 7 ngày. Bỏ qua lời mời đã Hết hiệu lực do KOC tham gia MCN khác.",
     "done": "Chạy lại không gửi trùng hoặc ghi đè trạng thái đã kết thúc.",
     "blocker": ""
    }
@@ -322,8 +322,8 @@ const GROUPS=[
     "area": "Backend",
     "fr": "FR-006/009/010",
     "title": "API truy vấn thành viên và người Chờ ký",
-    "scope": "Danh sách, trạng thái, tỷ lệ, ngày theo MCN; giới hạn thông tin của quan hệ chờ hoặc đã kết thúc.",
-    "done": "Đúng MCN và đúng phạm vi dữ liệu được phép truy cập.",
+    "scope": "Danh sách, trạng thái, tỷ lệ, ngày theo MCN; trạng thái chờ: Chờ ký, Quá hạn ký, Hết hiệu lực. Thành viên đã kết thúc: chỉ tên, ngày, trạng thái, lý do.",
+    "done": "Đúng MCN và đúng phạm vi dữ liệu được phép truy cập; KOC vào MCN khác thì MCN này thấy lời mời Hết hiệu lực, không thấy MCN kia.",
     "blocker": "Mốc thấy tên người Chờ ký còn chờ chốt."
    },
    {
@@ -331,7 +331,7 @@ const GROUPS=[
     "area": "Web",
     "fr": "FR-009/010",
     "title": "Giao diện thành viên và người Chờ ký",
-    "scope": "Danh sách thành viên và danh sách chờ, ngày hiệu lực và lý do kết thúc.",
+    "scope": "Danh sách thành viên và danh sách chờ, ngày hiệu lực và lý do kết thúc (KOC rời, MCN chấm dứt, hết hạn phụ lục).",
     "done": "Người ký xong không còn trong danh sách chờ; dữ liệu tuân thủ quyền truy cập.",
     "blocker": ""
    },
@@ -377,7 +377,7 @@ const GROUPS=[
     "fr": "FR-015",
     "title": "Giao diện MCN của tôi",
     "scope": "Thông tin MCN, tỷ lệ, phụ lục, trạng thái, ngày hiệu lực; thao tác Báo rời và Rút lại.",
-    "done": "Hiển thị đúng kết quả API; tài khoản không có quan hệ không thấy menu này.",
+    "done": "Hiển thị đúng kết quả API; hiện cho người đang chờ ký (một hoặc nhiều MCN) hoặc đang là thành viên; không có gì thì không thấy menu này.",
     "blocker": ""
    },
    {
@@ -436,7 +436,7 @@ const GROUPS=[
     "area": "Admin",
     "fr": "FR-017",
     "title": "Tab Người nhận trên Admin",
-    "scope": "Danh sách KOC/MCN, tỷ lệ, hoa hồng, phí, số cộng; bộ lọc và chi tiết phí của MCN.",
+    "scope": "Danh sách KOC/MCN, tỷ lệ, hoa hồng, phí, số cộng; bộ lọc và chi tiết phí của MCN. Số liệu lấy từ backend, không tự tính lại ở UI.",
     "done": "Tích hợp đúng API; không tính lại tiền khác với dữ liệu backend.",
     "blocker": ""
    },
@@ -547,7 +547,7 @@ const GROUPS=[
     "area": "Backend",
     "fr": "FR-022",
     "title": "Thông báo nghiệp vụ MCN",
-    "scope": "Xác định người nhận và nội dung theo sự kiện ký, nhắc hạn, báo rời, rút lại, chấm dứt và cộng phí.",
+    "scope": "Xác định người nhận và nội dung theo sự kiện đồng ý lời mời, ký xong, nhắc hạn ký, báo rời, rút lại, chấm dứt, rời có hiệu lực, hết hạn phụ lục và cộng phí.",
     "done": "Đúng mốc được xác nhận, không gửi trùng; trước khi ký chưa gọi là thành viên.",
     "blocker": ""
    },
